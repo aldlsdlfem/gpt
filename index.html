@@ -40,7 +40,7 @@
           </select>
         </section>
 
-        <button class="primary" id="analyze">등장인물 분석 &amp; 이미지 생성</button>
+        <button class="primary" id="analyze">등장인물 분석 &amp; 이미지 프롬프트 생성</button>
 
         <section class="slider-wrap">
           <div class="label-row">
@@ -65,8 +65,8 @@
         <header class="workspace-head">
           <h2>Visual Workspace</h2>
           <div class="actions">
-            <button class="head-btn">요약본 보기</button>
-            <button class="head-btn disabled" disabled>ZIP 내보내기</button>
+            <button class="head-btn" id="showSummary">요약본 보기</button>
+            <button class="head-btn" id="openChatGptAll" disabled>전체 프롬프트를 ChatGPT로</button>
           </div>
         </header>
 
@@ -74,12 +74,19 @@
           <button class="plus" aria-label="새 자산 추가">+</button>
           <h3>새로운 시각적 자산을 확보하세요</h3>
           <p>
-            이미지 생성이 안 되는 문제를 해결했습니다. 이제 문장 단위의 강력한 비주얼을
-            확인하세요.
+            대본을 장면 단위로 나누고, 장면별 이미지 프롬프트를 만들어 ChatGPT에서 바로
+            생성할 수 있습니다.
           </p>
         </div>
+
+        <section id="workspaceContent" class="workspace-content hidden">
+          <div class="summary-box" id="summaryBox"></div>
+          <div class="cards" id="cards"></div>
+        </section>
       </main>
     </div>
+
+    <div class="toast" id="toast" aria-live="polite"></div>
 
     <script src="app.js"></script>
   </body>
