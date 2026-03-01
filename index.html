@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Studio Pro - Script to Image</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="app">
+      <aside class="sidebar">
+        <header class="brand">
+          <div class="logo">&gt;_</div>
+          <h1>STUDIO PRO</h1>
+        </header>
+
+        <section class="field-group">
+          <label for="synopsis">시놉시스</label>
+          <textarea id="synopsis" placeholder="영상의 요약..."></textarea>
+        </section>
+
+        <section class="field-group">
+          <div class="label-row">
+            <label for="script">대본 (SCRIPT)</label>
+            <span class="required">REQUIRED</span>
+          </div>
+          <textarea id="script" placeholder="영상의 전체 대본..." required></textarea>
+        </section>
+
+        <section class="inline-row">
+          <label for="style">비주얼 스타일</label>
+          <select id="style">
+            <option>3D 픽사</option>
+            <option>3D 스켈레톤</option>
+            <option>스틱맨</option>
+            <option>한국 웹툰</option>
+            <option>컨트롤블</option>
+            <option>2D 애니메이션</option>
+            <option>지브리 스타일</option>
+          </select>
+        </section>
+
+        <button class="primary" id="analyze">등장인물 분석 &amp; 이미지 프롬프트 생성</button>
+
+        <section class="slider-wrap">
+          <div class="label-row">
+            <label for="scenes">장면 수</label>
+            <span class="count" id="sceneCount">6컷</span>
+          </div>
+          <input id="scenes" type="range" min="1" max="50" value="6" />
+        </section>
+
+        <section class="ratio-wrap">
+          <label>화면 비율</label>
+          <div class="ratio-group" role="radiogroup" aria-label="화면 비율">
+            <button class="ratio active" data-ratio="16:9" type="button">16:9</button>
+            <button class="ratio" data-ratio="9:16" type="button">9:16</button>
+          </div>
+        </section>
+
+        <button class="ghost" id="storyboard" disabled>스토리보드 생성</button>
+      </aside>
+
+      <main class="workspace">
+        <header class="workspace-head">
+          <h2>Visual Workspace</h2>
+          <div class="actions">
+            <button class="head-btn" id="showSummary">요약본 보기</button>
+            <button class="head-btn" id="openChatGptAll" disabled>전체 프롬프트를 ChatGPT로</button>
+          </div>
+        </header>
+
+        <div class="empty-state" id="emptyState">
+          <button class="plus" aria-label="새 자산 추가">+</button>
+          <h3>새로운 시각적 자산을 확보하세요</h3>
+          <p>
+            대본을 장면 단위로 나누고, 장면별 이미지 프롬프트를 만들어 ChatGPT에서 바로
+            생성할 수 있습니다.
+          </p>
+        </div>
+
+        <section id="workspaceContent" class="workspace-content hidden">
+          <div class="summary-box" id="summaryBox"></div>
+          <div class="cards" id="cards"></div>
+        </section>
+      </main>
+    </div>
+
+    <div class="toast" id="toast" aria-live="polite"></div>
+
+    <script src="app.js"></script>
+  </body>
+</html>
